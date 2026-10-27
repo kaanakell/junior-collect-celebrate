@@ -13,10 +13,10 @@ export class Hud {
         this.maxProgress = maxProgress;
 
         const { x, width } = CONFIG.layout.playArea;
-        const { y, pipSpacing } = CONFIG.layout.hud;
+        const { y, fontSize, pipSpacing, pipOffset } = CONFIG.layout.hud;
         const textStyle = {
             fontFamily: 'Arial',
-            fontSize: 32,
+            fontSize,
             fontWeight: 'bold' as const,
             fill: CONFIG.colors.hudText,
         };
@@ -35,9 +35,9 @@ export class Hud {
         //Pip sit to the left of the progress text
         for (let i = 0; i < maxProgress; i++) {
             const pip = new Graphics();
-            pip.position.set(right - 90 - (maxProgress - 1 - i) * pipSpacing, y);
+            pip.position.set(right - pipOffset - (maxProgress - 1 - i) * pipSpacing, y);
             this.pips.push(pip);
-            this.progressText.addChild(pip);
+            this.root.addChild(pip);
         }
 
         this.root.addChild(this.totalText, this.progressText);
@@ -49,11 +49,10 @@ export class Hud {
     }
 
     setProgress(progress: number) {
-        this.progressText.text = `${progress} / ${this.maxProgress}`;
+        this.progressText.text = `${progress}/${this.maxProgress}`;
         this.pips.forEach((pip, i) => {
             const filled = i < progress;
-            pip
-                .clear()
+            pip.clear()
                 .circle(0, 0, CONFIG.layout.hud.pipRadius)
                 .fill(filled ? CONFIG.colors.pipFilled : CONFIG.colors.pipEmpty);
         });

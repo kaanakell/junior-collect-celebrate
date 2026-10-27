@@ -117,5 +117,4 @@ export class GameScene {
         token.addChild(disc, label);
         return token;
     }
-
 }

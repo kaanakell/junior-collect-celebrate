@@ -1,9 +1,9 @@
-export class ResultWindow{
+export class ResultWindow {
     private readonly overlay: HTMLElement;
     private readonly totalEl: HTMLElement;
     private readonly closeBtn: HTMLButtonElement;
     private resolveClose: (() => void) | null = null;
-    
+
     constructor() {
         this.overlay = document.getElementById('result')!;
         this.totalEl = document.getElementById('result-total')!;
@@ -22,7 +22,7 @@ export class ResultWindow{
     }
 
     private close() {
-        if(!this.resolveClose) return;
+        if (!this.resolveClose) return;
 
         this.overlay.hidden = true;
         const resolve = this.resolveClose;

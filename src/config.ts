@@ -23,7 +23,7 @@ export const CONFIG = {
         token: { radius: 40 },
         //frontTopOffset: how far below the container's top edge the front panel starts
         container: { x: 480, y: 460, width: 320, height: 180, frontTopOffset: 50 },
-        hud: { y: 40, pipRadius: 12, pipSpacing: 36 },
+        hud: { y: 40, fontSize: 32, pipRadius: 12, pipSpacing: 36, pipOffset: 90 },
     },
 
     colors: {

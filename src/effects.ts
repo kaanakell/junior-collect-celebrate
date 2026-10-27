@@ -42,7 +42,10 @@ export class Effects {
             g.clear();
 
             const pulse = 0.5 + 0.5 * Math.sin(p * Math.PI * 6);
-            g.circle(x, y, 110 + 30 * pulse).fill({ color: activationGlow, alpha: 0.35 * envelope });
+            g.circle(x, y, 110 + 30 * pulse).fill({
+                color: activationGlow,
+                alpha: 0.35 * envelope,
+            });
 
             for (let k = 0; k < 3; k++) {
                 const q = (p * 2 + k / 3) % 1;
@@ -56,7 +59,11 @@ export class Effects {
             const dist = 40 + activationReach * easeOutCubic(p);
             for (let i = 0; i < activationParticles; i++) {
                 const angle = (i / activationParticles) * Math.PI * 2;
-                g.circle(x + Math.cos(angle) * dist, y + Math.sin(angle) * dist, 7 * (1 - p) + 1).fill({
+                g.circle(
+                    x + Math.cos(angle) * dist,
+                    y + Math.sin(angle) * dist,
+                    7 * (1 - p) + 1,
+                ).fill({
                     color: activationGlow,
                     alpha: envelope,
                 });

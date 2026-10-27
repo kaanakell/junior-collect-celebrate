@@ -3,7 +3,8 @@ import type { Ticker } from 'pixi.js';
 export function animate(
     ticker: Ticker,
     durationMs: number,
-    onUpdate: (progress: number) => void,): Promise<void> {
+    onUpdate: (progress: number) => void,
+): Promise<void> {
     return new Promise((resolve) => {
         let elapsedMs = 0;
 
@@ -23,7 +24,7 @@ export function animate(
 }
 
 export function wait(ticker: Ticker, durationMs: number): Promise<void> {
-    return animate(ticker, durationMs, () => { });
+    return animate(ticker, durationMs, () => {});
 }
 
 export function easeInQuad(p: number): number {

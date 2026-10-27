@@ -3,8 +3,8 @@ import { CONFIG } from './config';
 import type { GameScene } from './scene';
 import type { Hud } from './hud';
 import { animate, easeInQuad, wait } from './tween';
-import type {Effects} from './effects';
-import type {ResultWindow} from './result-window';
+import type { Effects } from './effects';
+import type { ResultWindow } from './result-window';
 
 type GameState = 'ready' | 'running' | 'result';
 
@@ -95,9 +95,11 @@ export class Game {
         this.hud.setTotal(this.total);
         this.hud.setProgress(this.progress);
 
-        this.log(`arrival ${value} -> total ${this.total}, progress ${this.progress}/${CONFIG.tokenValues.length}`,);
+        this.log(
+            `arrival ${value} -> total ${this.total}, progress ${this.progress}/${CONFIG.tokenValues.length}`,
+        );
 
-        if(this.progress === CONFIG.tokenValues.length){
+        if (this.progress === CONFIG.tokenValues.length) {
             this.log('activation start');
             await this.effects.activation();
             this.log('activation done');
